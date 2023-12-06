@@ -1,0 +1,39 @@
+antonio@antonio-Dell-G15-5520:~$ cd _DEV/react/
+antonio@antonio-Dell-G15-5520:~/_DEV/react$ npx create-next-app@latest nextjs-dashboard --use-npm --example "https://github.com/vercel/next-learn/tree/main/dashboard/starter-example"
+Creating a new Next.js app in /home/antonio/_DEV/react/nextjs-dashboard.
+
+Downloading files from repo https://github.com/vercel/next-learn/tree/main/dashboard/starter-example. This might take a moment.
+
+Installing packages. This might take a couple of minutes.
+
+
+added 573 packages, and audited 574 packages in 8s
+
+172 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Initialized a git repository.
+
+Success! Created nextjs-dashboard at /home/antonio/_DEV/react/nextjs-dashboard
+Inside that directory, you can run several commands:
+
+  npm run dev
+    Starts the development server.
+
+  npm run build
+    Builds the app for production.
+
+  npm start
+    Runs the built app in production mode.
+
+We suggest that you begin by typing:
+
+  cd nextjs-dashboard
+  npm run dev
+
+antonio@antonio-Dell-G15-5520:~/_DEV/react$ 
+ *  History restored 
+
+antonio@antonio-Dell-G15-5520:~/_DEV/react$ 

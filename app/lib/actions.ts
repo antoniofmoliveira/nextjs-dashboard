@@ -1,7 +1,8 @@
 'use server';
 
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
+import db, { sql } from "./db";
+
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
@@ -72,9 +73,9 @@ export async function createInvoice(prevState: State, formData: FormData) {
     const date = new Date().toISOString().split('T')[0];
 
     try {
-        await sql`
+        await db.query(sql`
     INSERT INTO invoices (customer_id, amount, status, date)
-    VALUES (${customerId}, ${amountInCents}, ${status}, ${date})`;
+    VALUES (${customerId}, ${amountInCents}, ${status}, ${date})`);
     } catch (error) {
         // If a database error occurs, return a more specific error.
         return { message: 'Database Error: Failed to Create Invoice.' };
@@ -110,10 +111,10 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
     const amountInCents = amount * 100;
 
     try {
-        await sql`
+        await db.query(sql`
     UPDATE invoices
     SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-    WHERE id = ${id}`;
+    WHERE id = ${id}`);
     } catch (error) {
         return { message: 'Database Error: Failed to Update Invoice.' };
     }
@@ -126,7 +127,7 @@ export async function deleteInvoice(id: string) {
     // throw new Error('Failed to Delete Invoice');
 
     try {
-        await sql`DELETE FROM invoices WHERE id = ${id}`;
+        await db.query(sql`DELETE FROM invoices WHERE id = ${id}`);
     } catch (error) {
         return { message: 'Database Error: Failed to Delete Invoice.' };
     }
